@@ -32,8 +32,7 @@ Answer grounded in my actual experience
 
 | Layer | Technology |
 |-------|-----------|
-| LLM | Google Gemini `gemini-2.0-flash` |
-| Fallback LLM | Groq `llama-3.3-70b` |
+| LLM | Google Gemini `gemini-2.0-flash` (fallback: Groq `llama-3.3-70b` if Gemini fails or hits quota) |
 | Embeddings | Google `models/embedding-004` |
 | Vector Store | ChromaDB |
 | Backend | FastAPI + Uvicorn |
@@ -137,7 +136,7 @@ edit .md → git push → HF rebuilds → ingest.py runs → done
 
 - **No LangChain** — dropped due to unresolvable circular dependency conflicts with `langchain-google-genai`. Using `google-generativeai` + `chromadb` directly.
 - **Ephemeral ChromaDB** — no persistent storage needed. The knowledge base is static (CV content), so regenerating on every deploy from source `.md` files is reliable and simple.
-- **Gemini + Groq fallback** — if Gemini fails, the pipeline retries with Groq's `llama-3.3-70b` automatically.
+- **Gemini + Groq fallback** — if Gemini fails or hits a 429 quota error, the pipeline automatically retries with Groq's `llama-3.3-70b-versatile`. In practice Groq handles most requests since Gemini's free tier quota is limited.
 
 ---
 
