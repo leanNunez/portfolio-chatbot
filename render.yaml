@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: portfolio-chatbot-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt && python scripts/ingest.py
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT --workers 1
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: ALLOWED_ORIGINS
+        value: https://portfoliochatbot-sepia.vercel.app
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: HEALTH_TOKEN
+        sync: false
+
