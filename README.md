@@ -142,7 +142,7 @@ edit .md → git push → HF rebuilds → ingest.py runs → done
 
 ## Author
 
-**Leandro Pablo Nuñez** — Full Stack Developer (Jr.)
+**Leandro Pablo Nuñez** — Full Stack Developer
 UTN FRT Tucumán · Graduating 2026
 
 [GitHub](https://github.com/leanNunez) · [Live Demo](https://portfoliochatbot-sepia.vercel.app)
