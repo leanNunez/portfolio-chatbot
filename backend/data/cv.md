@@ -2,6 +2,7 @@
 
 ## Información Personal
 - **Nombre**: Leandro Pablo Nuñez
+- **Edad**: 29 años (13 de mayo de 1996)
 - **Ubicación**: San Miguel de Tucumán, Argentina
 - **Email**: leandro_castillero@hotmail.es
 - **LinkedIn**: linkedin.com/in/lean-nunez

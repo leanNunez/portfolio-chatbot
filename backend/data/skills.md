@@ -29,10 +29,12 @@
 
 ## DevOps / Herramientas
 - **Git / GitHub** — Intermedio
+- **Docker** — Básico (conceptos sólidos, usado en el chatbot RAG para deploy en Hugging Face Spaces)
 - **Linux** — Intermedio
 - **Bash scripting** — Básico-Intermedio
 - **Neovim** — Editor principal
 - **Render.com** — Deploy de aplicaciones web
+- **Hugging Face Spaces** — Deploy de aplicaciones con Docker
 
 ## Automatización
 - Desarrollo de scripts de automatización con Bash y Node.js

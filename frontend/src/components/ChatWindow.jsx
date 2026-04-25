@@ -19,7 +19,10 @@ export function ChatWindow() {
     <div className="flex-1 flex flex-col h-full relative bg-zinc-950">
 
       {/* Header */}
-      <div className="flex items-center gap-3 px-6 py-4 border-b border-white/[0.06] bg-zinc-900/80 backdrop-blur-sm shrink-0">
+      <div
+        className="flex items-center gap-3 px-6 pb-4 border-b border-white/[0.06] bg-zinc-900/80 backdrop-blur-sm shrink-0"
+        style={{ paddingTop: "max(1rem, env(safe-area-inset-top))" }}
+      >
         <BotAvatar size={36} />
         <div>
           <p className="text-sm font-semibold text-white leading-tight">{t.assistantName}</p>
@@ -71,7 +74,10 @@ export function ChatWindow() {
       </div>
 
       {/* Input */}
-      <div className="w-full p-4 mt-auto border-t border-white/[0.06] bg-zinc-900/80 backdrop-blur-sm">
+      <div
+        className="w-full pt-4 px-4 mt-auto border-t border-white/[0.06] bg-zinc-900/80 backdrop-blur-sm"
+        style={{ paddingBottom: "max(1rem, env(safe-area-inset-bottom))" }}
+      >
         <ChatInput onSend={sendMessage} disabled={isLoading} />
       </div>
 
