@@ -1,3 +1,12 @@
+---
+title: Portfolio Chatbot
+emoji: 🤖
+colorFrom: blue
+colorTo: purple
+sdk: docker
+pinned: false
+---
+
 # Portfolio Chatbot — RAG over CV
 
 > AI-powered chatbot that answers questions about my experience, projects and skills using Retrieval-Augmented Generation (RAG).
