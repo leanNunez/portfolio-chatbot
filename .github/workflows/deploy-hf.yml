@@ -12,9 +12,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Push to Hugging Face
+      - name: Push backend to Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git remote add huggingface https://lean-dev:$HF_TOKEN@huggingface.co/spaces/lean-dev/portfolio-chatbot
-          git push huggingface main --force
+          git subtree split --prefix=backend --branch hf-deploy
+          git push https://lean-dev:$HF_TOKEN@huggingface.co/spaces/lean-dev/portfolio-chatbot hf-deploy:main --force
