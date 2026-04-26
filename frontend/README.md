@@ -1,16 +1,32 @@
-# React + Vite
+# Portfolio Chatbot — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React chat UI for the [Portfolio RAG Chatbot](../README.md). Streams answers from the FastAPI backend via SSE.
 
-Currently, two official plugins are available:
+**Live → [portfoliochatbot-sepia.vercel.app](https://portfoliochatbot-sepia.vercel.app)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
 
-## React Compiler
+| | |
+|---|---|
+| Framework | React 18 + Vite |
+| Styling | Tailwind CSS v4 |
+| Streaming | `EventSource` (SSE) |
+| Deploy | Vercel |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Local Dev
 
-## Expanding the ESLint configuration
+```bash
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Expects the backend at `http://localhost:8000`. To change it, set `VITE_API_URL` in `.env.local`.
+
+## Structure
+
+```
+src/
+├── components/   # Chat bubble, input, typing indicator
+├── hooks/        # useChat — SSE stream handling, history state
+└── context/      # Language context (EN/ES)
+```
