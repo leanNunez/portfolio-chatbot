@@ -38,26 +38,6 @@ separación clara entre frontend y backend.
 
 ---
 
-## AI Automation System
-**Estado**: Activo
-**Stack**: AI Agents, Node.js, Bash, Linux
-
-### Descripción
-Sistema de automatización con agentes de IA para tareas repetitivas en entornos Linux.
-Integra scripts de Bash con lógica de agentes para ejecutar flujos de trabajo automáticos.
-
----
-
-## Gym Platform
-**Estado**: Activo
-**Stack**: Node.js, MySQL, HTML, CSS, JavaScript
-
-### Descripción
-Plataforma web para gestión de gimnasio. Incluye registro de socios, control de asistencia
-y administración de pagos con backend en Node.js y base de datos MySQL.
-
----
-
 ## Portfolio Personal
 **Estado**: Live
 **Stack**: HTML5, CSS3, JavaScript, UX/UI

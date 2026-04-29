@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react"
 import { useLang } from "../context/LanguageContext"
 
-const API_URL = import.meta.env.VITE_API_URL
+const API_URL = import.meta.env.DEV ? "" : (import.meta.env.VITE_API_URL ?? "")
 
 export function useChat() {
   const { t } = useLang()
-  const [messages, setMessages] = useState([{ role: "assistant", content: t.welcomeMessage }])
+  const [messages, setMessages] = useState([{ id: crypto.randomUUID(), role: "assistant", content: t.welcomeMessage }])
 
   useEffect(() => {
-    setMessages([{ role: "assistant", content: t.welcomeMessage }])
+    setMessages([{ id: crypto.randomUUID(), role: "assistant", content: t.welcomeMessage }])
   }, [t.welcomeMessage])
   const [isLoading, setIsLoading] = useState(false)
 
   async function sendMessage(text) {
     if (!text.trim() || isLoading) return
 
-    setMessages(prev => [...prev, { role: "user", content: text }])
+    setMessages(prev => [...prev, { id: crypto.randomUUID(), role: "user", content: text }])
     setIsLoading(true)
 
     try {
@@ -31,7 +31,7 @@ export function useChat() {
       clearTimeout(timeout)
 
       if (res.status === 429) {
-        setMessages(prev => [...prev, { role: "assistant", content: t.errorRateLimit }])
+        setMessages(prev => [...prev, { id: crypto.randomUUID(), role: "assistant", content: t.errorRateLimit }])
         return
       }
 
@@ -40,11 +40,11 @@ export function useChat() {
       const data = await res.json()
       setMessages(prev => [
         ...prev,
-        { role: "assistant", content: data.answer, sources: data.sources },
+        { id: crypto.randomUUID(), role: "assistant", content: data.answer, sources: data.sources },
       ])
     } catch (err) {
       const msg = err?.name === "AbortError" ? t.errorTimeout : t.errorServer
-      setMessages(prev => [...prev, { role: "assistant", content: msg }])
+      setMessages(prev => [...prev, { id: crypto.randomUUID(), role: "assistant", content: msg }])
     } finally {
       setIsLoading(false)
     }

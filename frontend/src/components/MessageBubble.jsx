@@ -9,15 +9,17 @@ export function MessageBubble({ message }) {
       {!isUser && <BotAvatar size={30} className="mr-3 mt-1" />}
       <div
         className={cn(
-          "max-w-[70%] rounded-2xl px-5 py-4 text-base leading-relaxed",
+          "max-w-[85%] sm:max-w-[70%] rounded-2xl px-5 py-4 text-sm sm:text-base leading-relaxed break-words",
           isUser
-            ? "bg-blue-600 text-white rounded-br-md shadow-lg shadow-blue-900/25"
-            : "bg-white/[0.06] text-gray-100 rounded-bl-md border border-white/[0.07]"
+            ? "bg-blue-600 rounded-br-md shadow-lg shadow-blue-900/25"
+            : "bg-white/[0.06] rounded-bl-md border border-white/[0.07]"
         )}
       >
-        <p className="whitespace-pre-wrap">{message.content}</p>
+        <p className={cn("whitespace-pre-wrap", isUser ? "text-white" : "text-gray-100")}>
+          {message.content}
+        </p>
         {message.sources?.length > 0 && (
-          <p className="text-xs mt-3 opacity-40 border-t border-white/10 pt-2.5">
+          <p className="text-xs mt-3 text-gray-400 border-t border-white/10 pt-2.5">
             Fuente: {message.sources.join(", ")}
           </p>
         )}

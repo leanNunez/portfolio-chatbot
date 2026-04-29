@@ -1,13 +1,17 @@
 import { ChatWindow } from "./components/ChatWindow"
 import { ProfilePanel } from "./components/ProfilePanel"
+import { ProfileBanner } from "./components/ProfileBanner"
 import { LanguageProvider } from "./context/LanguageContext"
 
 export default function App() {
   return (
     <LanguageProvider>
-      <div className="flex h-dvh w-screen bg-zinc-950 overflow-hidden m-0 p-0">
+      <div className="flex flex-col lg:flex-row h-dvh w-screen bg-zinc-950 overflow-hidden m-0 p-0">
         <ProfilePanel />
-        <ChatWindow />
+        <div className="flex-1 flex flex-col min-h-0">
+          <ProfileBanner />
+          <ChatWindow />
+        </div>
       </div>
     </LanguageProvider>
   )

@@ -83,6 +83,7 @@ export function ProfilePanel() {
               href="https://github.com/leanNunez"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Ver perfil de GitHub de Leandro Nuñez (abre en nueva pestaña)"
               className="flex-1 flex items-center justify-center py-2.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] text-gray-400 hover:text-white text-xs font-medium transition-all border border-white/[0.07]"
             >
               GitHub
@@ -91,6 +92,7 @@ export function ProfilePanel() {
               href="https://www.linkedin.com/in/lean-nunez"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Ver perfil de LinkedIn de Leandro Nuñez (abre en nueva pestaña)"
               className="flex-1 flex items-center justify-center py-2.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] text-gray-400 hover:text-white text-xs font-medium transition-all border border-white/[0.07]"
             >
               LinkedIn

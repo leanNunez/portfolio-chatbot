@@ -6,6 +6,21 @@
   --color-panel-from: #0d1117;
   --color-panel-via: #0d1b2a;
   --color-panel-to: #1a0d2e;
+
+  --breakpoint-xs: 23.4375rem; /* 375px — iPhone SE / baseline mobile */
+}
+
+@utility text-fluid-sm {
+  font-size: clamp(0.75rem, 2.5vw, 0.875rem);
+}
+
+@utility text-fluid-base {
+  font-size: clamp(0.875rem, 3vw, 1rem);
+}
+
+/* Tailwind 4 no hereda color en form elements por defecto */
+input, button, textarea, select {
+  color: inherit;
 }
 
 html,
@@ -31,6 +46,9 @@ body {
 }
 .bot-float {
   animation: bot-float 3s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bot-float { animation: none; }
 }
 
 /* Custom scrollbar */
