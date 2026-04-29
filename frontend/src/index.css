@@ -23,11 +23,23 @@ input, button, textarea, select {
   color: inherit;
 }
 
-html,
+html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  /* Evita que iOS scrollee el html cuando aparece el teclado */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 body,
 #root {
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -36,7 +48,6 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow:hidden;
 }
 
 /* Bot avatar float animation */

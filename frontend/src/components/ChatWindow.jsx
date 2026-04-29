@@ -9,10 +9,12 @@ import { useLang } from "../context/LanguageContext"
 export function ChatWindow() {
   const { messages, isLoading, sendMessage } = useChat()
   const { t, lang, toggle } = useLang()
-  const bottomRef = useRef(null)
+  const messagesRef = useRef(null)
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" })
+    const el = messagesRef.current
+    if (!el) return
+    el.scrollTo({ top: el.scrollHeight, behavior: "smooth" })
   }, [messages, isLoading])
 
   return (
@@ -47,6 +49,7 @@ export function ChatWindow() {
 
       {/* Messages */}
       <div
+        ref={messagesRef}
         role="log"
         aria-live="polite"
         aria-label="Conversación con el asistente"
@@ -75,7 +78,6 @@ export function ChatWindow() {
             </div>
           )}
 
-          <div ref={bottomRef} />
         </div>
       </div>
 
