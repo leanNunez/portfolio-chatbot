@@ -6,7 +6,7 @@ import { LanguageProvider } from "./context/LanguageContext"
 export default function App() {
   return (
     <LanguageProvider>
-      <div className="flex flex-col lg:flex-row h-full w-full bg-zinc-950 overflow-hidden">
+      <div className="fixed inset-0 flex flex-col lg:flex-row bg-zinc-950 overflow-hidden">
         <ProfilePanel />
         <div className="flex-1 flex flex-col min-h-0">
           <ProfileBanner />
