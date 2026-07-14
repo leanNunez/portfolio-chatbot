@@ -1,16 +1,21 @@
 # Bio — Leandro Pablo Nuñez
 
 ## Quién soy
-Soy Leandro, tengo 29 años (nací el 13 de mayo de 1996 en Tucumán, Argentina) y soy desarrollador Full Stack junior de San Miguel de Tucumán, Argentina.
+Soy Leandro, tengo 29 años (nací el 13 de mayo de 1996 en Tucumán, Argentina) y soy desarrollador Full Stack junior de San Miguel de Tucumán, Argentina, especializado en IA generativa, RAG y sistemas agénticos.
+
+## Certificación en IA
+Leandro está certificado por **IBM** en **RAG and Agentic AI** (Professional Certificate, 2026): un programa de 10 cursos con proyecto capstone que cubre RAG, bases de datos vectoriales, IA multimodal, agentes de IA, LangChain, LangGraph, CrewAI, AutoGen, BeeAI y Model Context Protocol (MCP). La credencial es verificable en coursera.org/verify/professional-cert/QWM3S2AR4S9Y.
+
+También completó los cursos de Google Cloud "Prompt Design in Vertex AI" y "Develop GenAI Apps with Gemini".
 
 ## A qué se dedica / Qué hace / Estudia o trabaja
 Leandro hace tres cosas a la vez:
 
-1. **Estudia**: está en el último año de la Tecnicatura Universitaria en Programación en la UTN Facultad Regional Tucumán (UTN FRT) y se gradúa en 2026.
-2. **Trabaja**: actualmente trabaja como cajero en La Paisanita (Lomas de Tafí, Tucumán) desde 2022 para sostenerse económicamente mientras termina la carrera.
-3. **Construye proyectos en su tiempo libre**: usa cada momento libre para desarrollar proyectos reales con tecnologías modernas — un e-commerce Full Stack (PremiumTech), un sistema de automatización con agentes de IA, y este mismo chatbot con arquitectura RAG que estás usando ahora.
+1. **Estudia**: cursa la Tecnicatura Universitaria en Programación en la UTN Facultad Regional Tucumán (UTN FRT), desde 2023 y actualmente en 2° año.
+2. **Trabaja**: actualmente trabaja como cajero en La Paisanita (Lomas de Tafí, Tucumán) desde 2023 para sostenerse económicamente mientras estudia.
+3. **Construye proyectos en su tiempo libre**: usa cada momento libre para desarrollar proyectos reales con tecnologías modernas — un e-commerce Full Stack con IA (PremiumTech) y este mismo chatbot con arquitectura RAG que estás usando ahora.
 
-No tiene experiencia IT formal aún, pero tiene proyectos funcionando en producción y las ganas de aprender que ningún título puede enseñar.
+No tiene experiencia IT formal aún, pero tiene proyectos funcionando en producción, una certificación profesional de IBM en IA agéntica, y las ganas de aprender que ningún título puede enseñar.
 
 ## Qué busco
 Mi primer rol en IT como desarrollador Full Stack o Backend.
@@ -119,7 +124,9 @@ Este proceso le permite aprender de forma autónoma y llegar a los conceptos con
 Leandro conoce Scrum y Kanban — los estudió en la UTN FRT y complementa lo aprendido en la facultad con lectura por su cuenta para asentar conceptos y resolver dudas. Entiende el flujo de sprints, ceremonias de Scrum y la gestión visual con Kanban. No los aplicó en un entorno laboral IT todavía, pero tiene la base teórica sólida y la disposición para adaptarse al proceso de cualquier equipo desde el primer día.
 
 ## Testing / Unit tests / Pruebas / TDD
-Leandro tiene conocimientos básicos de testing — implementó tests en su e-commerce PremiumTech y entiende los conceptos fundamentales. Es un área donde todavía está creciendo, pero es una que le interesa profundizar activamente porque le gustó el proceso cuando lo practicó. No llega con dominio avanzado de TDD, pero sí con disposición real para aprenderlo y aplicarlo desde el primer día.
+Leandro implementó una test suite completa en su e-commerce PremiumTech con Vitest, React Testing Library y Supertest: tests unitarios, de componentes y de integración — estos últimos corriendo contra una base PostgreSQL real, no mocks. Todo integrado en CI con GitHub Actions.
+
+Es decir: no llega con testing "de teoría", llega habiendo sentido lo que es que un test de integración te ataje un bug antes del deploy. Dicho esto, es honesto sobre su nivel: todavía no domina TDD estricto ni estrategias avanzadas de mocking, y es un área donde quiere seguir creciendo activamente porque el proceso le gustó de verdad.
 
 ## Mayor debilidad técnica / puntos a mejorar / áreas de oportunidad
 La parte que más le cuesta a Leandro es el frontend, específicamente el diseño de UX/UI. Siente que va más lento cuando tiene que diseñar una interfaz desde cero — no por falta de conocimiento técnico, sino porque el ojo para el diseño es algo que se entrena con tiempo y práctica.
@@ -131,9 +138,10 @@ Dicho esto, su pasión y mayor fortaleza está en el backend: arquitectura, APIs
 ## Preguntas frecuentes
 
 **¿Por qué no tenés experiencia IT si ya sabés programar?**
-Porque estoy terminando la carrera este año y trabajé en otro rubro para pagarme los estudios.
-Pero en mi tiempo libre construí proyectos reales con tecnologías modernas que podés ver
-en mi GitHub y portfolio.
+Porque estoy cursando la carrera y trabajo en otro rubro para pagarme los estudios.
+Pero en mi tiempo libre construí proyectos reales con tecnologías modernas —con auth, tests,
+CI/CD y deploy en producción— que podés ver en mi GitHub y portfolio, y me certifiqué con IBM
+en RAG and Agentic AI.
 
 **¿Sabés trabajar en equipo? ¿Cómo manejás los conflictos?**
 En mi rol actual coordino compañeros y atiendo clientes, por lo que gestiono conflictos a diario. Mi prioridad siempre es la satisfacción del cliente y el buen clima del equipo.
