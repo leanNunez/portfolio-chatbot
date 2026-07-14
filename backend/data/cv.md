@@ -17,13 +17,14 @@ Junior Full Stack Developer | IA Generativa & Agentic AI
 Desarrollador full stack autodidacta especializado en IA generativa, RAG y sistemas agénticos.
 Dos años construyendo proyectos en producción con React 19, Node.js/Express y Python/FastAPI
 sobre PostgreSQL con pgvector. Certificado por IBM en RAG and Agentic AI (LangChain, LangGraph,
-CrewAI, MCP) y cursando la Tecnicatura Universitaria en Programación en UTN FRT.
-Busca su primera posición Junior para sumar al equipo desde el día uno.
+CrewAI, MCP) y cursando el último año de la Tecnicatura Universitaria en Programación en UTN FRT,
+con graduación en 2026. Busca su primera posición Junior para sumar al equipo desde el día uno.
 
 ## Educación
 
 ### Universidad Tecnológica Nacional — Facultad Regional Tucumán
-**Tecnicatura Universitaria en Programación** — 2023 a la actualidad (en curso, 2° año).
+**Tecnicatura Universitaria en Programación** — 2023 a la actualidad. Cursando el último año,
+se gradúa en 2026.
 Materias relevantes: Programación Web, Bases de Datos, Algoritmos y Estructuras de Datos,
 Paradigmas de Programación.
 

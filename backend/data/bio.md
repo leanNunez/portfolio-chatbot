@@ -11,8 +11,8 @@ También completó los cursos de Google Cloud "Prompt Design in Vertex AI" y "De
 ## A qué se dedica / Qué hace / Estudia o trabaja
 Leandro hace tres cosas a la vez:
 
-1. **Estudia**: cursa la Tecnicatura Universitaria en Programación en la UTN Facultad Regional Tucumán (UTN FRT), desde 2023 y actualmente en 2° año.
-2. **Trabaja**: actualmente trabaja como cajero en La Paisanita (Lomas de Tafí, Tucumán) desde 2023 para sostenerse económicamente mientras estudia.
+1. **Estudia**: cursa el último año de la Tecnicatura Universitaria en Programación en la UTN Facultad Regional Tucumán (UTN FRT). Empezó en 2023 y se gradúa en 2026.
+2. **Trabaja**: actualmente trabaja como cajero en La Paisanita (Lomas de Tafí, Tucumán) desde 2023 para sostenerse económicamente mientras termina la carrera.
 3. **Construye proyectos en su tiempo libre**: usa cada momento libre para desarrollar proyectos reales con tecnologías modernas — un e-commerce Full Stack con IA (PremiumTech) y este mismo chatbot con arquitectura RAG que estás usando ahora.
 
 No tiene experiencia IT formal aún, pero tiene proyectos funcionando en producción, una certificación profesional de IBM en IA agéntica, y las ganas de aprender que ningún título puede enseñar.
@@ -138,7 +138,7 @@ Dicho esto, su pasión y mayor fortaleza está en el backend: arquitectura, APIs
 ## Preguntas frecuentes
 
 **¿Por qué no tenés experiencia IT si ya sabés programar?**
-Porque estoy cursando la carrera y trabajo en otro rubro para pagarme los estudios.
+Porque estoy terminando la carrera este año y trabajo en otro rubro para pagarme los estudios.
 Pero en mi tiempo libre construí proyectos reales con tecnologías modernas —con auth, tests,
 CI/CD y deploy en producción— que podés ver en mi GitHub y portfolio, y me certifiqué con IBM
 en RAG and Agentic AI.
