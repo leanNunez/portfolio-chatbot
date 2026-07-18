@@ -13,7 +13,7 @@ Leandro hace tres cosas a la vez:
 
 1. **Estudia**: cursa el último año de la Tecnicatura Universitaria en Programación en la UTN Facultad Regional Tucumán (UTN FRT). Empezó en 2023 y se gradúa en 2026.
 2. **Trabaja**: actualmente trabaja como cajero en La Paisanita (Lomas de Tafí, Tucumán) desde 2023 para sostenerse económicamente mientras termina la carrera.
-3. **Construye proyectos en su tiempo libre**: usa cada momento libre para desarrollar proyectos reales con tecnologías modernas — un e-commerce Full Stack con IA (PremiumTech) y este mismo chatbot con arquitectura RAG que estás usando ahora.
+3. **Construye proyectos en su tiempo libre**: usa cada momento libre para desarrollar proyectos reales con tecnologías modernas — un ERP multi-tenant AI-native (Repuestero, su proyecto técnicamente más ambicioso), un e-commerce Full Stack con IA (PremiumTech) y este mismo chatbot con arquitectura RAG que estás usando ahora.
 
 No tiene experiencia IT formal aún, pero tiene proyectos funcionando en producción, una certificación profesional de IBM en IA agéntica, y las ganas de aprender que ningún título puede enseñar.
 
@@ -82,11 +82,16 @@ Lo que le daría a una empresa desde el primer día es autonomía técnica. No s
 Leandro cuenta con su jefe actual en La Paisanita como referencia. No es una empresa IT, pero puede validar habilidades blandas clave: responsabilidad, puntualidad, manejo de presión, trabajo en equipo y trato con personas — competencias que cualquier empresa valora independientemente del rubro.
 
 ## Proyecto favorito / Proyecto del que más orgulloso está / Qué proyecto le generó más orgullo
-Su proyecto más querido es PremiumTech, el e-commerce Full Stack. No es solo el más completo técnicamente — tiene historia detrás.
+Su proyecto favorito y del que más orgulloso está es PremiumTech, el e-commerce Full Stack. No es su proyecto más ambicioso técnicamente —ese lugar lo ocupa Repuestero, su ERP multi-tenant— pero es el que más quiere por la historia que tiene detrás.
 
 Empezó como una versión en vanilla JavaScript, sin frameworks. Luego lo rehízo desde cero con React 19, TypeScript, Node.js y PostgreSQL — una versión completamente mejorada que refleja todo lo que aprendió en el camino.
 
 Lo que más le costó y más le enseñó fue la autenticación: el sistema de seguridad, JWT, el hasheo de contraseñas. Asentar ese conocimiento le llevó mucho tiempo y frustración genuina. Pero esa frustración es exactamente lo que hace que ese proyecto le genere tanto orgullo — cada parte tiene el peso de haberla entendido de verdad, no de haberla copiado.
+
+## Proyecto más complejo / técnicamente más ambicioso / más desafiante
+El proyecto técnicamente más ambicioso de Leandro es **Repuestero**, un ERP multi-tenant AI-native. Ahí llevó su arquitectura al siguiente nivel: aislamiento entre organizaciones con Row-Level Security de PostgreSQL (el org_id sale de la base, no del JWT, y la app corre sin BYPASSRLS), un asistente NL2SQL orquestado con LangGraph con 5 capas de defensa, e ingesta de remitos por foto con revisión humana obligatoria (el LLM propone, el humano dispone).
+
+Es una reescritura de un sistema legacy real en Delphi/Paradox de una casa de repuestos, así que cada decisión de diseño corrige un problema concreto del sistema viejo — no es arquitectura por gusto. Su favorito emocional sigue siendo PremiumTech por la historia, pero Repuestero es donde más se estiró como arquitecto de software.
 
 ## Qué espera de su primer trabajo / Expectativas del equipo y la empresa
 Lo más importante para Leandro es la experiencia de trabajar en un equipo real resolviendo problemas reales — eso es lo que ningún proyecto personal puede reemplazar.
