@@ -42,6 +42,26 @@ Credencial verificable: coursera.org/verify/professional-cert/QWM3S2AR4S9Y
 
 ## Experiencia en Proyectos
 
+### Repuestero — ERP Multi-Tenant AI-Native
+Proyecto personal. Rol: Full Stack / AI Developer.
+Stack: Python, FastAPI, SQLAlchemy 2.0, PostgreSQL 16, pgvector, Alembic, LangGraph, Groq, OpenAI, sqlglot, React 19, Supabase.
+
+- Reescritura de un ERP legacy real (Delphi/Paradox) de una casa de repuestos hacia una
+  arquitectura multi-tenant AI-native; monolito modular package-by-feature con separación
+  estricta router → service.
+- Aislamiento entre organizaciones con Row-Level Security de PostgreSQL: el org_id se resuelve
+  desde la base (no del JWT) y la app corre con un rol NOSUPERUSER sin BYPASSRLS; verificado con
+  un test dedicado de aislamiento entre tenants.
+- Asistente conversacional NL2SQL orquestado con LangGraph (máquina de estados con reintentos y
+  fallback Groq → OpenAI) y defensa en profundidad de 5 capas: filtro anti prompt-injection,
+  SQL guard con sqlglot, rol de base solo-SELECT y statement timeout; respuesta vía streaming SSE.
+- Ingesta de remitos por foto con modelo multimodal y Human-in-the-Loop: separación
+  propuesta/confirmación, un remito = una transacción y unique index sobre hash de imagen como
+  candado de concurrencia.
+- CI en GitHub Actions (9 suites pytest incl. aislamiento RLS + vitest) contra Postgres/pgvector
+  real, con branch protection obligatoria. Deploy en vivo en Render + Vercel + Supabase.
+- Demo: repuestero.vercel.app
+
 ### PremiumTech — E-commerce Full Stack con IA
 Proyecto personal. Rol: Desarrollador Full Stack.
 Stack: React 19, TypeScript, Node.js, Express, PostgreSQL, Prisma, pgvector.
@@ -75,8 +95,8 @@ Stack: Python, FastAPI, ChromaDB, Google Gemini, Groq, Docker, React, Tailwind.
 
 **Lenguajes**: JavaScript (ES6+), TypeScript, Python, SQL, HTML, CSS
 
-**IA Generativa y RAG**: RAG, embeddings vectoriales, búsqueda semántica, function calling,
-prompt engineering, IA multimodal
+**IA Generativa y RAG**: RAG, embeddings vectoriales, búsqueda semántica, function calling, NL2SQL,
+prompt engineering, IA multimodal, defensa en profundidad contra prompt injection
 
 **Agentes de IA**: LangChain, LangGraph, CrewAI, AutoGen, BeeAI, Model Context Protocol (MCP),
 arquitecturas multi-agente
@@ -86,9 +106,9 @@ arquitecturas multi-agente
 **Frontend**: React 19, TanStack Router, TanStack Query, Zustand, Tailwind CSS,
 React Hook Form + Zod, Shadcn UI
 
-**Backend**: Node.js, Express, FastAPI, REST APIs, JWT (access + refresh), SSE streaming
+**Backend**: Node.js, Express, FastAPI, SQLAlchemy 2.0, Alembic, REST APIs, JWT (access + refresh), SSE streaming
 
-**Bases de datos**: PostgreSQL (Prisma, pgvector), MySQL, modelado relacional, full-text search
+**Bases de datos**: PostgreSQL (Prisma, SQLAlchemy, pgvector, Alembic), Row-Level Security (multi-tenant), Supabase, MySQL, modelado relacional, full-text search
 
 **Testing**: Vitest, React Testing Library, Supertest (unit, component, integration)
 

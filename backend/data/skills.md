@@ -8,7 +8,9 @@ Certificado por IBM en RAG and Agentic AI (2026).
 - **RAG (Retrieval-Augmented Generation)** — Implementación end-to-end, pipeline propio sin framework
 - **Embeddings vectoriales y búsqueda semántica** — Cohere (1024 dim), Gemini embeddings
 - **Function calling** — Herramientas propias con hasta 8 rondas de razonamiento
-- **Prompt engineering** y defensa contra prompt injection
+- **NL2SQL** — Traducción de lenguaje natural a SQL de solo lectura, con validación por sqlglot y defensa en profundidad
+- **Orquestación con LangGraph** — Máquinas de estado con reintentos y fallback entre proveedores (Groq → OpenAI)
+- **Prompt engineering** y defensa contra prompt injection (keyword + semántico)
 - **IA multimodal** — Formación en el certificado de IBM
 
 ## Agentes de IA
@@ -40,13 +42,17 @@ Certificado por IBM en RAG and Agentic AI (2026).
 ## Backend
 - **Node.js / Express** — Intermedio
 - **Python / FastAPI** — Intermedio
+- **SQLAlchemy 2.0 + Alembic** — ORM y migraciones de esquema versionadas
+- **Arquitectura multi-tenant** — Aislamiento por Row-Level Security, monolito modular package-by-feature, capa service separada del router
 - **REST APIs** — Diseño e implementación
 - **JWT** — Access + refresh token, cookies HttpOnly, RBAC
 - **SSE streaming** — Respuestas en streaming
 - **C#** — Básico
 
 ## Bases de Datos
-- **PostgreSQL** — Intermedio (Prisma, pgvector, full-text search)
+- **PostgreSQL** — Intermedio (Prisma, SQLAlchemy, pgvector, Alembic, full-text search)
+- **Row-Level Security (RLS)** — Aislamiento multi-tenant a nivel de base, con roles sin BYPASSRLS
+- **Supabase** — Postgres gestionado + Auth
 - **MySQL** — Intermedio
 - **Prisma** — ORM type-safe
 - Modelado relacional
