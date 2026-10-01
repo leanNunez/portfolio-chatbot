@@ -97,6 +97,15 @@ export function ProfilePanel() {
             >
               LinkedIn
             </a>
+            <a
+              href="https://leannunez.github.io/myportfolio/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Ver el portfolio de Leandro Nuñez (abre en nueva pestaña)"
+              className="flex-1 flex items-center justify-center py-2.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] text-gray-400 hover:text-white text-xs font-medium transition-all border border-white/[0.07]"
+            >
+              Portfolio
+            </a>
           </div>
         </div>
       </div>
