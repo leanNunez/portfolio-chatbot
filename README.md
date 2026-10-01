@@ -157,7 +157,8 @@ portfolio-chatbot/
 
 | Decision | Why |
 |----------|-----|
-| No LangChain | Dropped due to unresolvable dependency conflicts with `langchain-google-genai`. Uses `google-generativeai`, `groq` and `chromadb` directly. |
+| No LangChain | Dropped due to unresolvable dependency conflicts with `langchain-google-genai`. Uses `google-genai`, `groq` and `chromadb` directly. |
+| Degraded mode | Without embedding quota, the API still starts and falls back to keyword (BM25) retrieval; Groq covers generation if Gemini's quota is gone too. |
 | Ephemeral ChromaDB | The knowledge base is static, so regenerating it on every deploy from the source `.md` files is reliable and needs no persistent storage. |
 | Gemini + Groq fallback | Gemini is the primary model. Any Gemini error (quota, outage, safety block) or empty answer falls back to Groq, so the chat keeps answering. |
 | JSON over streaming | Answers are short; a single JSON response keeps the client and error handling simple. |

@@ -120,6 +120,7 @@ Set `GOOGLE_API_KEY`, `GROQ_API_KEY`, `ALLOWED_ORIGINS`, `ENVIRONMENT=production
 
 ## Architecture notes
 
-- **No LangChain**: uses `google-generativeai`, `groq` and `chromadb` directly to avoid dependency conflicts.
+- **No LangChain**: uses `google-genai`, `groq` and `chromadb` directly to avoid dependency conflicts.
+- **Degraded mode**: if embeddings are unavailable (e.g. the free-tier daily quota of 1000 embed requests is exhausted), ingest failure no longer stops the container. Retrieval falls back to keyword (BM25) search over the same chunks, and injection detection keeps its keyword layer. Answers keep working through Groq even when Gemini's quota is also gone.
 - **Ephemeral ChromaDB**: regenerated on every deploy from the `.md` sources; a static knowledge base needs no persistent storage.
 - **Gemini + Groq fallback**: on any Gemini failure or empty answer, the request is retried on Groq.

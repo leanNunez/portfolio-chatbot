@@ -60,7 +60,11 @@ app.include_router(chat.router, prefix="/api")
 async def startup():
     from services.rag_service import init_injection_embeddings, get_collection
     init_injection_embeddings()
-    get_collection()  # warm up ChromaDB so the first visitor doesn't pay the load
+    try:
+        get_collection()  # warm up ChromaDB so the first visitor doesn't pay the load
+    except Exception as e:
+        # No index (e.g. ingest failed on embedding quota): answers use keyword retrieval
+        logging.getLogger(__name__).warning("ChromaDB collection unavailable (%s).", e)
 
 
 @app.get("/api/status")
