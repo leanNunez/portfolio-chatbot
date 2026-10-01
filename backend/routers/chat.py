@@ -3,13 +3,13 @@ import time
 from collections import defaultdict
 from fastapi import APIRouter, HTTPException, Request
 from slowapi import Limiter
-from slowapi.util import get_remote_address
 
 from models.schemas import ChatRequest, ChatResponse
 from services.rag_service import get_answer
+from services.client_ip import get_client_ip
 
 logger = logging.getLogger(__name__)
-limiter = Limiter(key_func=get_remote_address)
+limiter = Limiter(key_func=get_client_ip)
 router = APIRouter()
 
 # IPs baneadas temporalmente por intentos de injection: {ip: banned_until}
@@ -21,22 +21,10 @@ BAN_DURATION_SECONDS = 600  # 10 minutos
 MAX_STRIKES = 3
 
 
-TRUSTED_PROXIES = {"127.0.0.1", "::1"}
-
-def _get_ip(request: Request) -> str:
-    # Solo confiamos en X-Forwarded-For si el request viene de un proxy conocido (Render)
-    client_ip = request.client.host if request.client else "unknown"
-    if client_ip in TRUSTED_PROXIES:
-        forwarded = request.headers.get("X-Forwarded-For", "")
-        if forwarded:
-            return forwarded.split(",")[0].strip()
-    return client_ip
-
-
 @router.post("/chat", response_model=ChatResponse)
 @limiter.limit("20/minute")
 async def chat(request: Request, body: ChatRequest):
-    ip = _get_ip(request)
+    ip = get_client_ip(request)
 
     # Chequear si la IP está baneada
     if ip in _banned:
