@@ -2,17 +2,20 @@ import { ChatWindow } from "./components/ChatWindow"
 import { ProfilePanel } from "./components/ProfilePanel"
 import { ProfileBanner } from "./components/ProfileBanner"
 import { LanguageProvider } from "./context/LanguageContext"
+import { ChatProvider } from "./context/ChatContext"
 
 export default function App() {
   return (
     <LanguageProvider>
-      <div className="fixed inset-0 flex flex-col lg:flex-row bg-zinc-950 overflow-hidden">
-        <ProfilePanel />
-        <div className="flex-1 flex flex-col min-h-0">
+      <ChatProvider>
+        <div className="fixed inset-0 flex flex-col overflow-clip bg-bg lg:flex-row">
+          <ProfilePanel />
           <ProfileBanner />
-          <ChatWindow />
+          <main className="flex min-h-0 flex-1 flex-col">
+            <ChatWindow />
+          </main>
         </div>
-      </div>
+      </ChatProvider>
     </LanguageProvider>
   )
 }

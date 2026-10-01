@@ -1,68 +1,41 @@
 import { useState } from "react"
-import { useLang } from "../context/LanguageContext"
-
-function SendIcon() {
-  return (
-    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 2L11 13"/>
-      <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
-    </svg>
-  )
-}
+import { useLang } from "../context/language"
+import { SendIcon } from "./icons"
 
 export function ChatInput({ onSend, disabled }) {
   const [value, setValue] = useState("")
   const { t } = useLang()
+  const canSend = !disabled && value.trim().length > 0
 
   function handleSubmit(e) {
     e.preventDefault()
-    if (!value.trim()) return
+    if (!canSend) return
     onSend(value)
     setValue("")
   }
 
-  function handleKeyDown(e) {
-    if (e.key === "Enter" && !e.shiftKey) {
-      handleSubmit(e)
-    }
-  }
-
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="w-full"
-    >
-      <div className="max-w-3xl mx-auto flex gap-3 items-center">
-        <input
-          value={value}
-          onChange={e => setValue(e.target.value)}
-          onKeyDown={handleKeyDown}
-          disabled={disabled}
-          placeholder={t.inputPlaceholder}
-          className="flex-1 bg-white/[0.05] placeholder-gray-600 rounded-xl px-3 sm:px-5 py-3 sm:py-3.5 text-sm sm:text-base outline-none
-            border border-white/[0.07]
-            focus:border-blue-500/40 focus:bg-white/[0.08] focus:ring-1 focus:ring-blue-500/30
-            disabled:opacity-50
-            transition-all duration-200"
-          style={{ color: "white" }}
-        />
-        <button
-          type="submit"
-          aria-label={t.send}
-          disabled={disabled || !value.trim()}
-          className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-violet-600
-            hover:from-blue-500 hover:to-violet-500
-            disabled:from-blue-600 disabled:to-violet-600 disabled:opacity-30 disabled:cursor-not-allowed
-            rounded-xl px-3 sm:px-5 py-3 sm:py-3.5 text-sm font-medium
-            shadow-lg shadow-blue-900/30 hover:shadow-blue-800/50
-            hover:scale-[1.02] active:scale-[0.98]
-            touch-manipulation transition-all duration-150 shrink-0"
-          style={{ color: "white" }}
-        >
-          <span className="hidden xs:inline">{t.send}</span>
-          <SendIcon />
-        </button>
-      </div>
+    <form onSubmit={handleSubmit} className="mx-auto flex w-full max-w-3xl items-center gap-3">
+      <label htmlFor="chat-input" className="sr-only">
+        {t.inputLabel}
+      </label>
+      <input
+        id="chat-input"
+        value={value}
+        onChange={e => setValue(e.target.value)}
+        placeholder={t.inputPlaceholder}
+        autoComplete="off"
+        className="min-h-12 min-w-0 flex-1 rounded-lg border border-line-strong bg-raised px-4 text-base text-text placeholder:text-muted transition-colors hover:border-text-2 focus-visible:border-accent"
+      />
+      <button
+        type="submit"
+        disabled={!canSend}
+        aria-label={t.send}
+        className="inline-flex min-h-12 shrink-0 touch-manipulation items-center gap-2 rounded-lg bg-accent px-4 font-mono text-xs font-semibold text-accent-ink transition-colors hover:bg-accent-hover active:bg-accent disabled:cursor-not-allowed disabled:bg-raised disabled:text-muted"
+      >
+        <span className="hidden xs:inline">{t.send}</span>
+        <SendIcon className="size-4" />
+      </button>
     </form>
   )
 }
