@@ -33,7 +33,6 @@ CHROMA_DIR  = os.getenv("CHROMA_PERSIST_DIR", "./chroma_db")
 COLLECTION  = "portfolio"
 EMBED_MODEL = "models/gemini-embedding-001"
 CHUNK_SIZE  = 500
-CHUNK_OVERLAP = 50
 MAX_RETRIES = 5
 RETRY_DELAY_SECONDS = 30
 

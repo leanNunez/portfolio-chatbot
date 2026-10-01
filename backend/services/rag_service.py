@@ -201,7 +201,7 @@ def _call_llm(user_message: str) -> str:
 
 
 def _call_groq(user_message: str) -> str:
-    """Fallback LLM: Groq con llama-3.3-70b."""
+    """Fallback LLM: Groq con el modelo de GROQ_MODEL."""
     client = Groq(api_key=os.getenv("GROQ_API_KEY"))
     response = client.chat.completions.create(
         model=GROQ_MODEL,
