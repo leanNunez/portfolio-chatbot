@@ -13,6 +13,9 @@ Actualmente Leandro trabaja como desarrollador freelance en LeanDev, su emprendi
 
 Antes de dedicarse al desarrollo, Leandro trabajó de 2023 a 2026 en La Paisanita Lomas (Tucumán) como cajero, en atención al cliente y coordinación de delivery, mientras estudiaba.
 
+## Estudios / ¿Cuándo se recibe? / ¿Cuándo se gradúa? / When does he graduate?
+Leandro estudia la Tecnicatura Universitaria en Programación en la UTN Facultad Regional Tucumán (UTN FRT). Empezó en 2023, cursa el último año y se recibe (egreso previsto) en 2026/2027. No necesita esperar a recibirse para trabajar: ya trabaja como desarrollador freelance en LeanDev.
+
 ## Experiencia profesional como desarrollador / ¿Tiene experiencia laboral en IT?
 Sí. Desde agosto de 2026 Leandro trabaja como desarrollador freelance en LeanDev. Su trabajo principal ahí es el sistema de gestión de reparto de una distribuidora de bebidas, en producción con uso diario de repartidores y administración: backend en FastAPI con arquitectura hexagonal, libros mayores append-only protegidos con triggers de PostgreSQL, una PWA offline-first con sincronización idempotente, más de 1.100 tests automatizados y CI en GitHub Actions.
 
