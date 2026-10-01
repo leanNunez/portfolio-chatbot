@@ -1,29 +1,61 @@
-import { cn } from "../lib/cn"
-import { BotAvatar } from "./BotAvatar"
+import { useLang } from "../context/language"
+import { BotBubble } from "./BotBubble"
+import { MarkdownMessage } from "./MarkdownMessage"
+import { QueryLog } from "./QueryLog"
+import { AlertIcon, RetryIcon } from "./icons"
 
-export function MessageBubble({ message }) {
-  const isUser = message.role === "user"
+const ERROR_COPY = {
+  rateLimit: "errorRateLimit",
+  timeout: "errorTimeout",
+  server: "errorServer",
+}
 
-  return (
-    <div className={cn("flex mb-6", isUser ? "justify-end" : "justify-start")}>
-      {!isUser && <BotAvatar size={30} className="mr-3 mt-1" />}
-      <div
-        className={cn(
-          "max-w-[85%] sm:max-w-[70%] rounded-2xl px-5 py-4 text-sm sm:text-base leading-relaxed break-words",
-          isUser
-            ? "bg-blue-600 rounded-br-md shadow-lg shadow-blue-900/25"
-            : "bg-white/[0.06] rounded-bl-md border border-white/[0.07]"
-        )}
-      >
-        <p className={cn("whitespace-pre-wrap", isUser ? "text-white" : "text-gray-100")}>
+export function MessageBubble({ message, onRetry, canRetry, retryDisabled }) {
+  const { t } = useLang()
+
+  if (message.role === "user") {
+    return (
+      <div className="flex justify-end">
+        <p className="max-w-[85%] whitespace-pre-wrap break-words rounded-lg border-r-2 border-accent bg-raised px-4 py-3 text-text sm:max-w-[70%]">
+          <span className="sr-only">{t.you} </span>
           {message.content}
         </p>
-        {message.sources?.length > 0 && (
-          <p className="text-xs mt-3 text-gray-400 border-t border-white/10 pt-2.5">
-            Fuente: {message.sources.join(", ")}
-          </p>
-        )}
       </div>
-    </div>
+    )
+  }
+
+  if (message.kind === "error") {
+    return (
+      <BotBubble tone="error">
+        <p className="flex items-start gap-2">
+          <AlertIcon className="mt-1 size-4 shrink-0 text-error" />
+          <span>
+            <span className="sr-only">{t.errorTitle}: </span>
+            {t[ERROR_COPY[message.errorType]]}
+          </span>
+        </p>
+        {canRetry && (
+          <button
+            type="button"
+            onClick={onRetry}
+            disabled={retryDisabled}
+            className="mt-3 inline-flex min-h-10 items-center gap-2 rounded-md border border-line-strong bg-surface px-3 font-mono text-xs text-text transition-colors hover:bg-raised active:bg-bg disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-surface"
+          >
+            <RetryIcon className="size-4" />
+            {t.retry}
+          </button>
+        )}
+      </BotBubble>
+    )
+  }
+
+  const content = message.kind === "welcome" ? (message.content ?? t.welcomeMessage) : message.content
+
+  return (
+    <BotBubble>
+      <span className="sr-only">{t.assistant} </span>
+      <MarkdownMessage content={content} />
+      {message.latency != null && <QueryLog sources={message.sources} latency={message.latency} />}
+    </BotBubble>
   )
 }

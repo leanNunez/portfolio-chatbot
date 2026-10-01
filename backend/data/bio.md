@@ -1,32 +1,42 @@
 # Bio — Leandro Pablo Nuñez
 
 ## Quién soy
-Soy Leandro, tengo 29 años (nací el 13 de mayo de 1996 en Tucumán, Argentina) y soy desarrollador Full Stack junior de San Miguel de Tucumán, Argentina, especializado en IA generativa, RAG y sistemas agénticos.
+Soy Leandro Nuñez, tengo 30 años (nací el 13 de mayo de 1996 en Tucumán, Argentina) y soy desarrollador Full Stack con perfil backend fuerte, de San Miguel de Tucumán, Argentina. Mi stack principal es Python/FastAPI y React/TypeScript sobre PostgreSQL, tengo sistemas en producción usados por clientes reales y experiencia integrando IA generativa (RAG, agentes, LLMs) en aplicaciones de negocio.
 
 ## Certificación en IA
 Leandro está certificado por **IBM** en **RAG and Agentic AI** (Professional Certificate, 2026): un programa de 10 cursos con proyecto capstone que cubre RAG, bases de datos vectoriales, IA multimodal, agentes de IA, LangChain, LangGraph, CrewAI, AutoGen, BeeAI y Model Context Protocol (MCP). La credencial es verificable en coursera.org/verify/professional-cert/QWM3S2AR4S9Y.
 
 También completó los cursos de Google Cloud "Prompt Design in Vertex AI" y "Develop GenAI Apps with Gemini".
 
-## A qué se dedica / Qué hace / Estudia o trabaja
-Leandro hace tres cosas a la vez:
+## A qué se dedica / Dónde trabaja actualmente / Estudia o trabaja
+Actualmente Leandro trabaja como desarrollador freelance en LeanDev, su emprendimiento de desarrollo de software (desde agosto de 2026, remoto, desde Tucumán). Ahí desarrolló de punta a punta el sistema de gestión de reparto de una distribuidora de bebidas, que hoy está en producción con uso diario y reemplazó a un software de escritorio legacy. Además estudia: cursa el último año de la Tecnicatura Universitaria en Programación en la UTN Facultad Regional Tucumán (UTN FRT), con egreso previsto para 2026/2027. Y construye proyectos propios: Repuestero (ERP multi-tenant con IA), PremiumTech (e-commerce Full Stack con IA) y este mismo chatbot RAG.
 
-1. **Estudia**: cursa el último año de la Tecnicatura Universitaria en Programación en la UTN Facultad Regional Tucumán (UTN FRT). Empezó en 2023 y se gradúa en 2026.
-2. **Trabaja**: actualmente trabaja como cajero en La Paisanita (Lomas de Tafí, Tucumán) desde 2023 para sostenerse económicamente mientras termina la carrera.
-3. **Construye proyectos en su tiempo libre**: usa cada momento libre para desarrollar proyectos reales con tecnologías modernas — un ERP multi-tenant AI-native (Repuestero, su proyecto técnicamente más ambicioso), un e-commerce Full Stack con IA (PremiumTech) y este mismo chatbot con arquitectura RAG que estás usando ahora.
+Antes de dedicarse al desarrollo, Leandro trabajó de 2023 a 2026 en La Paisanita Lomas (Tucumán) como cajero, en atención al cliente y coordinación de delivery, mientras estudiaba.
 
-No tiene experiencia IT formal aún, pero tiene proyectos funcionando en producción, una certificación profesional de IBM en IA agéntica, y las ganas de aprender que ningún título puede enseñar.
+## Experiencia profesional como desarrollador / ¿Tiene experiencia laboral en IT?
+Sí. Desde agosto de 2026 Leandro trabaja como desarrollador freelance en LeanDev. Su trabajo principal ahí es el sistema de gestión de reparto de una distribuidora de bebidas, en producción con uso diario de repartidores y administración: backend en FastAPI con arquitectura hexagonal, libros mayores append-only protegidos con triggers de PostgreSQL, una PWA offline-first con sincronización idempotente, más de 1.100 tests automatizados y CI en GitHub Actions.
+
+En LeanDev, Leandro hizo el ciclo completo con el cliente real: relevamiento, diseño de arquitectura, desarrollo, deploy (Render + Neon con PostgreSQL 17), backups diarios a Cloudflare R2 con restauración probada y soporte. Es decir, ya sabe lo que es mantener un sistema en producción del que depende un negocio todos los días.
 
 ## Qué busco
-Mi primer rol en IT como desarrollador Full Stack o Backend.
-Me interesan especialmente equipos donde pueda seguir aprendiendo, aportar desde el día uno
-con proyectos reales, y trabajar con tecnologías modernas — especialmente en el cruce entre
-desarrollo web e Inteligencia Artificial.
+Leandro busca sumarse a un equipo como desarrollador Full Stack o Backend.
+Le interesan especialmente equipos donde pueda seguir aprendiendo, aportar desde el día uno
+con la experiencia de haber llevado un sistema a producción, y trabajar con tecnologías modernas —
+especialmente backend con Python/FastAPI y PostgreSQL, y el cruce entre desarrollo web e
+Inteligencia Artificial.
 
-## Disponibilidad
+## Disponibilidad / ¿Está disponible para trabajar? / ¿Busca trabajo?
+Sí, Leandro está disponible para trabajar y abierto a nuevas oportunidades.
 - **Modalidad**: Remoto, híbrido o presencial (Tucumán, Argentina)
-- **Disponibilidad**: Inmediata — puede arrancar ahora en cualquier modalidad: full-time, part-time o pasantía, sin necesidad de esperar a graduarse en 2026.
+- **Disponibilidad**: Inmediata — puede arrancar ahora en cualquier modalidad: full-time, part-time o pasantía, sin necesidad de esperar a recibirse (egreso previsto 2026/2027).
 - **Zona horaria**: UTC-3 (Argentina)
+
+## Contacto / ¿Cómo contactar a Leandro?
+Para contactar a Leandro Nuñez:
+- **Email**: lean.p.dev@gmail.com
+- **LinkedIn**: linkedin.com/in/lean-nunez
+- **GitHub**: github.com/leanNunez
+- **Portfolio**: leannunez.github.io/myportfolio
 
 ## Disponibilidad para viajar / trabajar en otro país / reubicación
 Leandro está completamente disponible para viajar, reubicarse o trabajar en otro país. Le encantan las nuevas aventuras y ve la posibilidad de trabajar en el exterior como una oportunidad enorme de crecimiento personal y profesional. No tiene ataduras que le impidan moverse — si la oportunidad es buena, va. También está disponible para trabajo 100% remoto para empresas de cualquier parte del mundo.
@@ -48,7 +58,7 @@ A Leandro le encanta hablar con la gente — lo disfruta genuinamente. Considera
 
 Le gusta mucho hacer amigos y establecer conversaciones reales, no solo superficiales. En el trabajo, es de los que se llevan bien con todos: desde el compañero nuevo hasta el jefe, porque trata a cada persona con el mismo respeto y calidez.
 
-En cuanto a hablar en público, no le genera ansiedad — al contrario, lo ve como una oportunidad. Su trabajo actual como cajero lo entrenó para comunicarse bajo presión, con clientes difíciles y en situaciones de estrés, lo que le dio una base sólida de comunicación asertiva y manejo emocional en tiempo real.
+En cuanto a hablar en público, no le genera ansiedad — al contrario, lo ve como una oportunidad. Su trabajo como cajero en La Paisanita (2023–2026) lo entrenó para comunicarse bajo presión, con clientes difíciles y en situaciones de estrés, lo que le dio una base sólida de comunicación asertiva y manejo emocional en tiempo real.
 
 Con los compañeros de trabajo es colaborativo, directo y siempre dispuesto a sumar. No compite — prefiere que el equipo gane a destacarse solo.
 
@@ -70,16 +80,16 @@ Me veo dominando no solo el código, sino todo el ciclo de vida del software: de
 
 En resumen, me veo como alguien en quien el equipo confía para resolver problemas complejos de forma autónoma y que, a la vez, contribuye a que el flujo de trabajo de todos sea mejor y más moderno.
 
-## ¿Por qué elegirme si no tengo experiencia IT formal?
+## ¿Por qué elegir a Leandro? / ¿Qué aporta a un equipo?
 
-Mi curva de aprendizaje ya está muy avanzada. En lugar de esperar a entrar a una empresa para aprender cómo se trabaja, me encargué de construir un ecosistema de proyectos personales y académicos que replican entornos reales.
+Leandro ya entregó un sistema real en producción: como freelance en LeanDev desarrolló de punta a punta la gestión de reparto de una distribuidora de bebidas, que se usa todos los días. No aprendió a trabajar "en teoría" — hizo el relevamiento con el cliente, diseñó la arquitectura, la desarrolló, la deployó y la sostiene.
 
-He trabajado en diseño de arquitecturas de bases de datos SQL, consumo de APIs e implementación de soluciones con Inteligencia Artificial — específicamente arquitecturas RAG. Además, tengo la autonomía para gestionar mis propios deploys en la nube, lo que significa que entiendo cómo mi código impacta en producción.
+Su fuerte es el backend: modelado de datos íntegro (libros mayores append-only, triggers y Row-Level Security en PostgreSQL), arquitecturas mantenibles (hexagonal, monolito modular) y testing automatizado contra base de datos real. A eso suma frontend con React/TypeScript (incluida una PWA offline-first) e integración de IA generativa con criterio de seguridad.
 
-Lo que le daría a una empresa desde el primer día es autonomía técnica. No soy un junior que solo sabe teoría: soy un desarrollador que ya sabe lo que es enfrentarse a un error en producción, investigar la solución con herramientas avanzadas y deployar una corrección de forma segura.
+Lo que le daría a una empresa desde el primer día es autonomía técnica: alguien que ya sabe lo que es enfrentarse a un problema en producción, investigar la solución y deployar una corrección de forma segura, con CI, migraciones versionadas y backups probados.
 
 ## Referencias / Quién puede validarlo
-Leandro cuenta con su jefe actual en La Paisanita como referencia. No es una empresa IT, pero puede validar habilidades blandas clave: responsabilidad, puntualidad, manejo de presión, trabajo en equipo y trato con personas — competencias que cualquier empresa valora independientemente del rubro.
+Leandro cuenta como referencia con su jefe en La Paisanita Lomas, donde trabajó de 2023 a 2026. No es una empresa IT, pero puede validar habilidades blandas clave: responsabilidad, puntualidad, manejo de presión, trabajo en equipo y trato con personas — competencias que cualquier empresa valora independientemente del rubro.
 
 ## Proyecto favorito / Proyecto del que más orgulloso está / Qué proyecto le generó más orgullo
 Su proyecto favorito y del que más orgulloso está es PremiumTech, el e-commerce Full Stack. No es su proyecto más ambicioso técnicamente —ese lugar lo ocupa Repuestero, su ERP multi-tenant— pero es el que más quiere por la historia que tiene detrás.
@@ -89,12 +99,14 @@ Empezó como una versión en vanilla JavaScript, sin frameworks. Luego lo rehíz
 Lo que más le costó y más le enseñó fue la autenticación: el sistema de seguridad, JWT, el hasheo de contraseñas. Asentar ese conocimiento le llevó mucho tiempo y frustración genuina. Pero esa frustración es exactamente lo que hace que ese proyecto le genere tanto orgullo — cada parte tiene el peso de haberla entendido de verdad, no de haberla copiado.
 
 ## Proyecto más complejo / técnicamente más ambicioso / más desafiante
-El proyecto técnicamente más ambicioso de Leandro es **Repuestero**, un ERP multi-tenant AI-native. Ahí llevó su arquitectura al siguiente nivel: aislamiento entre organizaciones con Row-Level Security de PostgreSQL (el org_id sale de la base, no del JWT, y la app corre sin BYPASSRLS), un asistente NL2SQL orquestado con LangGraph con 5 capas de defensa, e ingesta de remitos por foto con revisión humana obligatoria (el LLM propone, el humano dispone).
+En el plano profesional, el trabajo más importante de Leandro es el **sistema de gestión de reparto** que desarrolló como freelance en LeanDev para una distribuidora de bebidas: está en producción con uso diario, con sincronización offline idempotente, libros mayores append-only y más de 1.100 tests.
+
+Entre sus proyectos personales, el técnicamente más ambicioso de Leandro es **Repuestero**, un ERP multi-tenant AI-native. Ahí llevó su arquitectura al siguiente nivel: aislamiento entre organizaciones con Row-Level Security de PostgreSQL (el org_id sale de la base, no del JWT, y la app corre sin BYPASSRLS), un asistente NL2SQL orquestado con LangGraph con 5 capas de defensa, e ingesta de remitos por foto con revisión humana obligatoria (el LLM propone, el humano dispone).
 
 Es una reescritura de un sistema legacy real en Delphi/Paradox de una casa de repuestos, así que cada decisión de diseño corrige un problema concreto del sistema viejo — no es arquitectura por gusto. Su favorito emocional sigue siendo PremiumTech por la historia, pero Repuestero es donde más se estiró como arquitecto de software.
 
-## Qué espera de su primer trabajo / Expectativas del equipo y la empresa
-Lo más importante para Leandro es la experiencia de trabajar en un equipo real resolviendo problemas reales — eso es lo que ningún proyecto personal puede reemplazar.
+## Qué espera de su próximo trabajo / Expectativas del equipo y la empresa
+Lo más importante para Leandro es la experiencia de trabajar en un equipo de desarrollo resolviendo problemas reales junto a otros — algo que ni los proyectos personales ni el trabajo freelance en solitario reemplazan del todo.
 
 Pero más allá de lo técnico, le importa el contexto humano: quiere conocer a sus compañeros, entender el ambiente de trabajo, la historia de la empresa y hacia dónde va. No busca solo un sueldo o un título en el CV — busca un lugar donde crecer como profesional y como persona al mismo tiempo.
 
@@ -103,15 +115,15 @@ Cree que el entorno donde trabajás te forma tanto como los proyectos que hacés
 ## Por qué programación / Por qué empezaste / Historia de origen
 Desde chico le fascinaban las computadoras y la tecnología — no los juegos ni los videos, sino cómo estaban construidas y cómo podían resolver cualquier problema. Esa curiosidad siempre estuvo ahí.
 
-Durante años tuvo dudas y no se animaba a dar el salto: trabajaba en otras cosas para sostenerse económicamente y postergaba la decisión. Hasta que un día tomó una apuesta arriesgada, apostó por lo que siempre quiso, y no se arrepiente. Hoy estudia, trabaja y construye proyectos en paralelo — todo con el objetivo de dedicarse al 100% a la tecnología.
+Durante años tuvo dudas y no se animaba a dar el salto: trabajaba en otras cosas para sostenerse económicamente y postergaba la decisión. Hasta que un día tomó una apuesta arriesgada, apostó por lo que siempre quiso, y no se arrepiente. Hoy ya trabaja como desarrollador freelance, estudia y construye proyectos en paralelo — dedicado a la tecnología.
 
-No llegó a los 29 años "tarde" — llegó con convicción, con las dudas resueltas y con hambre de aprender que alguien de 22 recién salido de la secundaria difícilmente tiene.
+No llegó "tarde" a la programación — llegó con convicción, con las dudas resueltas y con hambre de aprender que alguien de 22 recién salido de la secundaria difícilmente tiene.
 
 ## Feedback negativo / Críticas / Cómo reacciona a las críticas
 Leandro está acostumbrado a recibir feedback negativo y lo procesa bien — aunque reconoce que antes le costaba más. Hoy lo recibe con gratitud genuina porque entiende que detrás de una crítica, incluso dicha con el tono equivocado, hay una oportunidad de mejora. No lo toma como ataque personal sino como información valiosa. Su mentalidad es simple: toda mejora es bienvenida, sin importar cómo llegue.
 
 ## Manejo de múltiples responsabilidades / Organización / Trabajo bajo presión
-Leandro lleva adelante tres cosas en paralelo todos los días: estudia en la UTN, trabaja como cajero para sostenerse, y construye proyectos reales en su tiempo libre. No es algo que le pase — es algo que eligió.
+Leandro lleva adelante varias cosas en paralelo: trabaja como desarrollador freelance en LeanDev sosteniendo un sistema en producción, cursa el último año en la UTN y construye proyectos propios. Entre 2023 y 2026 además trabajó como cajero en La Paisanita Lomas mientras estudiaba y programaba. No es algo que le pase — es algo que eligió.
 
 Eso requiere organización, disciplina y saber priorizar. No espera a tener tiempo ideal para aprender — aprende en los huecos que encuentra. Esa capacidad de avanzar bajo presión y sin condiciones perfectas es exactamente lo que un equipo de trabajo real exige.
 
@@ -129,9 +141,9 @@ Este proceso le permite aprender de forma autónoma y llegar a los conceptos con
 Leandro conoce Scrum y Kanban — los estudió en la UTN FRT y complementa lo aprendido en la facultad con lectura por su cuenta para asentar conceptos y resolver dudas. Entiende el flujo de sprints, ceremonias de Scrum y la gestión visual con Kanban. No los aplicó en un entorno laboral IT todavía, pero tiene la base teórica sólida y la disposición para adaptarse al proceso de cualquier equipo desde el primer día.
 
 ## Testing / Unit tests / Pruebas / TDD
-Leandro implementó una test suite completa en su e-commerce PremiumTech con Vitest, React Testing Library y Supertest: tests unitarios, de componentes y de integración — estos últimos corriendo contra una base PostgreSQL real, no mocks. Todo integrado en CI con GitHub Actions.
+El testing es una parte central de cómo trabaja Leandro. En el sistema de reparto que desarrolló como freelance en LeanDev sostiene más de 1.100 tests automatizados: más de 520 de backend con pytest contra PostgreSQL real, y frontend con Vitest, Testing Library y MSW. Además, la lógica de negocio compartida entre backend y cliente se verifica con un corpus de casos en JSON que corren a la vez pytest y Vitest. Todo corre en CI con GitHub Actions (tests, typecheck y build de imagen Docker) en cada pull request.
 
-Es decir: no llega con testing "de teoría", llega habiendo sentido lo que es que un test de integración te ataje un bug antes del deploy. Dicho esto, es honesto sobre su nivel: todavía no domina TDD estricto ni estrategias avanzadas de mocking, y es un área donde quiere seguir creciendo activamente porque el proceso le gustó de verdad.
+En sus proyectos personales también testea contra base real: PremiumTech tiene tests unitarios, de componentes y de integración con Vitest, React Testing Library y Supertest contra PostgreSQL, y Repuestero tiene 9 suites de pytest, incluida una de aislamiento RLS entre tenants. Leandro incluye TDD entre sus prácticas y no llega con testing "de teoría": sabe lo que es que un test de integración te ataje un bug antes del deploy.
 
 ## Mayor debilidad técnica / puntos a mejorar / áreas de oportunidad
 La parte que más le cuesta a Leandro es el frontend, específicamente el diseño de UX/UI. Siente que va más lento cuando tiene que diseñar una interfaz desde cero — no por falta de conocimiento técnico, sino porque el ojo para el diseño es algo que se entrena con tiempo y práctica.
@@ -142,14 +154,15 @@ Dicho esto, su pasión y mayor fortaleza está en el backend: arquitectura, APIs
 
 ## Preguntas frecuentes
 
-**¿Por qué no tenés experiencia IT si ya sabés programar?**
-Porque estoy terminando la carrera este año y trabajo en otro rubro para pagarme los estudios.
-Pero en mi tiempo libre construí proyectos reales con tecnologías modernas —con auth, tests,
-CI/CD y deploy en producción— que podés ver en mi GitHub y portfolio, y me certifiqué con IBM
-en RAG and Agentic AI.
+**¿Tenés experiencia profesional como desarrollador?**
+Sí. Desde agosto de 2026 trabajo como desarrollador freelance en LeanDev: desarrollé de punta a
+punta el sistema de gestión de reparto de una distribuidora de bebidas, que hoy está en producción
+con uso diario. Antes trabajé en otro rubro (La Paisanita, 2023–2026) para pagarme los estudios,
+y en paralelo construí proyectos propios —con auth, tests, CI/CD y deploy— que podés ver en mi
+GitHub y portfolio. Además me certifiqué con IBM en RAG and Agentic AI.
 
 **¿Sabés trabajar en equipo? ¿Cómo manejás los conflictos?**
-En mi rol actual coordino compañeros y atiendo clientes, por lo que gestiono conflictos a diario. Mi prioridad siempre es la satisfacción del cliente y el buen clima del equipo.
+En La Paisanita coordinaba un equipo de 4 repartidores y atendía clientes, por lo que gestionaba conflictos a diario; hoy, como freelance, trabajo directo con el cliente desde el relevamiento hasta el soporte. Mi prioridad siempre es la satisfacción del cliente y el buen clima del equipo.
 
 Me formé en comunicación asertiva para evitar confrontaciones innecesarias. Mi regla de oro es nunca invalidar al otro con un "no" o un "estás mal" — eso solo genera roces y pérdida de tiempo.
 
@@ -165,8 +178,9 @@ Lo resolví con estudio profundo y práctica constante. Más adelante, en mi e-c
 Ese desafío me enseñó dos cosas: que la seguridad no es opcional y que combinar fundamentos sólidos con herramientas de IA me permite entregar soluciones robustas de forma mucho más ágil.
 
 **¿Cuál es tu stack preferido?**
-React + TypeScript en el frontend, Node.js o FastAPI en el backend, PostgreSQL como base de datos.
-Y cada vez más Python para todo lo relacionado a IA y automatización.
+Python con FastAPI en el backend, PostgreSQL como base de datos y React + TypeScript en el
+frontend — es el stack con el que tengo un sistema en producción. Python también es mi lenguaje
+para todo lo relacionado a IA y automatización, y uso Node.js/Express cuando el proyecto lo pide.
 
 **¿Cuáles son tus expectativas salariales?**
 Dada mi experiencia coordinando equipos y mi dominio del stack técnico con herramientas de IA, mi expectativa para un esquema de tiempo completo está en un rango de $1.600.000 a $2.000.000 pesos brutos mensuales.
@@ -174,5 +188,4 @@ Dada mi experiencia coordinando equipos y mi dominio del stack técnico con herr
 De todas formas, estoy abierto a escuchar la propuesta económica integral — incluyendo beneficios y plan de carrera — ya que mi prioridad hoy es sumarme a un equipo donde pueda seguir aportando valor y creciendo profesionalmente.
 
 **¿Hablás inglés?**
-Nivel intermedio. Leo documentación técnica en inglés sin problemas y puedo comunicarme
-en un contexto laboral.
+Leo documentación técnica en inglés con fluidez; la conversación todavía la estoy desarrollando.

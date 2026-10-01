@@ -1,70 +1,279 @@
+@import "@fontsource-variable/jetbrains-mono/wght.css";
+@import "@fontsource/ibm-plex-sans/latin-400.css";
+@import "@fontsource/ibm-plex-sans/latin-600.css";
 @import "tailwindcss";
 
+/* Tokens — source of truth: docs/art-direction.md */
 @theme {
-  --color-base: #0a0a10;
-  --color-surface: #0d0d14;
-  --color-panel-from: #0d1117;
-  --color-panel-via: #0d1b2a;
-  --color-panel-to: #1a0d2e;
+  --color-*: initial;
+  --color-bg: #14171b;
+  --color-surface: #1b1f24;
+  --color-raised: #232830;
+  --color-line: #2e343d;          /* decorative dividers only */
+  --color-line-strong: #6b7480;   /* control borders: >=3:1 on every surface */
+  --color-text: #e8ebee;          /* 12.4:1 on raised */
+  --color-text-2: #b4bcc6;        /* 7.7:1 on raised */
+  --color-muted: #8b95a1;         /* 4.9:1 on raised */
+  --color-accent: #3fb8a6;        /* 6.1:1 on raised */
+  --color-accent-hover: #5cc9b8;
+  --color-accent-ink: #14171b;    /* text on accent: 7.4:1 */
+  --color-error: #e5735f;         /* 4.9:1 on raised */
 
-  --breakpoint-xs: 23.4375rem; /* 375px — iPhone SE / baseline mobile */
+  --font-*: initial;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, sans-serif;
+
+  /* Ratio 1.25, body 16px */
+  --text-*: initial;
+  --text-xs: 0.8rem;
+  --text-xs--line-height: 1.45;
+  --text-base: 1rem;
+  --text-base--line-height: 1.55;
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 1.4;
+  --text-xl: 1.5625rem;
+  --text-xl--line-height: 1.2;
+  --text-2xl: 1.953rem;
+  --text-2xl--line-height: 1.15;
+  --text-3xl: 2.441rem;
+  --text-3xl--line-height: 1.1;
+  --text-4xl: 3.052rem;
+  --text-4xl--line-height: 1.05;
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --default-transition-duration: 160ms;
+  --default-transition-timing-function: var(--ease-standard);
+
+  /* UI-chrome animations; character motion lives in .robot-* below */
+  --animate-typing: typing 1.2s var(--ease-standard) infinite;
+  @keyframes typing {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  /* Header mascot arriving after the first message when there is no gutter */
+  --animate-robot-enter: robot-enter 160ms var(--ease-standard) backwards;
+  @keyframes robot-enter {
+    from { opacity: 0; transform: translateY(4px) scale(0.9); }
+  }
+
+  --breakpoint-xs: 23.4375rem; /* 375px */
 }
 
-@utility text-fluid-sm {
-  font-size: clamp(0.75rem, 2.5vw, 0.875rem);
+@utility pt-safe {
+  padding-top: max(--spacing(3), env(safe-area-inset-top));
 }
 
-@utility text-fluid-base {
-  font-size: clamp(0.875rem, 3vw, 1rem);
+@utility pb-safe {
+  padding-bottom: max(--spacing(3), env(safe-area-inset-bottom));
 }
 
-/* Tailwind 4 no hereda color en form elements por defecto */
-input, button, textarea, select {
-  color: inherit;
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Tailwind 4 does not inherit color on form controls */
+  input,
+  button,
+  textarea,
+  select {
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
-html,
-body,
-#root {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
+/* Scrollbar for the message log */
+.log-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
 }
 
-body {
-  background-color: var(--color-base);
-  color: #f3f4f6;
-  font-family: system-ui, -apple-system, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Robot mascot. Every animation is keyed to a mood class (robot--<mood>)
+   driven by chat state; there is no ambient loop outside a mood. Static
+   poses are plain transforms, so prefers-reduced-motion (which strips all
+   animations and transitions in the base layer) still shows the pose. */
+.robot-part {
+  transform-box: fill-box;
+  transition: transform 240ms var(--ease-standard);
+}
+.robot-upper { transform-origin: 50% 100%; }   /* waist */
+.robot-head { transform-origin: 50% 100%; }    /* neck */
+.robot-arm { transform-origin: 50% 11%; }      /* shoulder */
+.robot-leg { transform-origin: 50% 0%; }       /* hip */
+.robot-eye {
+  transform-origin: 50% 50%;
+  transition-duration: 90ms;
+}
+.robot-eye.is-blinking { transform: scaleY(0.1); }
+.robot-pupil { transition: transform 120ms linear; }
+.robot-light { transition: fill 160ms var(--ease-standard); }
+
+/* idle / waving / worried: breathing */
+.robot--idle .robot-upper,
+.robot--waving .robot-upper,
+.robot--worried .robot-upper {
+  animation: robot-breathe 3.6s ease-in-out infinite;
 }
 
-/* Bot avatar float animation */
-@keyframes bot-float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-7px); }
+/* thinking: head tilt, hand at chin, antenna + chest light pulse */
+.robot--thinking .robot-head { transform: rotate(6deg); }
+.robot--thinking .robot-arm-r { transform: rotate(125deg); }
+.robot--thinking .robot-light { animation: robot-pulse 1.1s ease-in-out infinite; }
+
+/* waving: right arm up, swinging */
+.robot--waving .robot-arm-r {
+  transform: rotate(-140deg);
+  animation: robot-wave 0.9s ease-in-out infinite;
 }
-.bot-float {
-  animation: bot-float 3s ease-in-out infinite;
+
+/* dancing: bounce, sway, alternating arms, stepping legs, head bob */
+.robot--dancing .robot-rig { animation: robot-bounce 0.42s ease-in-out infinite; }
+.robot--dancing .robot-upper { animation: robot-sway 0.84s ease-in-out infinite; }
+.robot--dancing .robot-head { animation: robot-bob 0.42s ease-in-out infinite alternate; }
+.robot--dancing .robot-arm-l {
+  transform: rotate(150deg);
+  animation: robot-swing-l 0.84s ease-in-out infinite;
+}
+.robot--dancing .robot-arm-r {
+  transform: rotate(-150deg);
+  animation: robot-swing-r 0.84s ease-in-out infinite;
+}
+.robot--dancing .robot-leg-l { animation: robot-step 0.84s ease-in-out infinite; }
+.robot--dancing .robot-leg-r { animation: robot-step 0.84s ease-in-out -0.42s infinite; }
+
+/* sleeping: head droops, slow breath, drifting z's */
+.robot--sleeping .robot-head { transform: rotate(-6deg); }
+.robot--sleeping .robot-upper { animation: robot-breathe 5s ease-in-out infinite; }
+.robot-z { animation: robot-z 3s ease-out infinite; }
+.robot-z-2 { animation-delay: 1.5s; }
+
+/* running (hero -> gutter): forward lean to the right (mirrored when running
+   left), body bob, legs alternating fast, arms pumping in opposition */
+.robot--running .robot-rig { animation: robot-bounce 0.3s ease-in-out infinite; }
+.robot--running .robot-upper { transform: rotate(10deg); }
+.robot--running .robot-arm-l { animation: robot-pump 0.3s ease-in-out -0.3s infinite alternate; }
+.robot--running .robot-arm-r { animation: robot-pump 0.3s ease-in-out infinite alternate; }
+.robot--running .robot-leg-l { animation: robot-stride 0.3s ease-in-out infinite alternate; }
+.robot--running .robot-leg-r { animation: robot-stride 0.3s ease-in-out -0.3s infinite alternate; }
+
+/* worried */
+.robot-sweat { animation: robot-drip 2.4s ease-in infinite; }
+
+@keyframes robot-breathe {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(1.5px); }
+}
+@keyframes robot-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+@keyframes robot-wave {
+  0%, 100% { transform: rotate(-150deg); }
+  50% { transform: rotate(-115deg); }
+}
+@keyframes robot-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes robot-sway {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+@keyframes robot-bob {
+  from { transform: rotate(-8deg); }
+  to { transform: rotate(8deg); }
+}
+@keyframes robot-swing-l {
+  0%, 100% { transform: rotate(150deg); }
+  50% { transform: rotate(25deg); }
+}
+@keyframes robot-swing-r {
+  0%, 100% { transform: rotate(-25deg); }
+  50% { transform: rotate(-150deg); }
+}
+@keyframes robot-step {
+  0%, 50%, 100% { transform: translateY(0) rotate(0); }
+  25% { transform: translateY(-5px) rotate(-10deg); }
+}
+@keyframes robot-pump {
+  from { transform: rotate(-45deg); }
+  to { transform: rotate(45deg); }
+}
+@keyframes robot-stride {
+  from { transform: rotate(30deg); }
+  to { transform: rotate(-30deg); }
+}
+@keyframes robot-z {
+  0% { transform: translate(0, 4px); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translate(6px, -8px); opacity: 0; }
+}
+@keyframes robot-drip {
+  0% { transform: translateY(-2px); opacity: 0; }
+  20%, 70% { opacity: 1; }
+  100% { transform: translateY(4px); opacity: 0; }
+}
+
+/* Phone profile drawer (native modal <dialog>): slides in from the left over a
+   fading backdrop. allow-discrete keeps display/overlay alive for the exit. */
+.profile-drawer {
+  transform: translateX(-100%);
+  transition-property: transform, display, overlay;
+  transition-duration: 160ms;
+  transition-timing-function: var(--ease-standard);
+  transition-behavior: allow-discrete;
+}
+.profile-drawer[open] {
+  transform: none;
+}
+.profile-drawer::backdrop {
+  background-color: transparent;
+  transition-property: background-color, display, overlay;
+  transition-duration: 160ms;
+  transition-timing-function: var(--ease-standard);
+  transition-behavior: allow-discrete;
+}
+.profile-drawer[open]::backdrop {
+  background-color: color-mix(in srgb, var(--color-bg) 75%, transparent);
+}
+@starting-style {
+  .profile-drawer[open] {
+    transform: translateX(-100%);
+  }
+  .profile-drawer[open]::backdrop {
+    background-color: transparent;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
-  .bot-float { animation: none; }
-}
-
-/* Custom scrollbar */
-.custom-scroll::-webkit-scrollbar {
-  width: 4px;
-}
-
-.custom-scroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.custom-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 2px;
-}
-
-.custom-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.15);
+  .profile-drawer,
+  .profile-drawer::backdrop {
+    transition: none;
+  }
 }

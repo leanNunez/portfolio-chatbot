@@ -1,14 +1,58 @@
 # Proyectos — Leandro Pablo Nuñez
 
+## Sistema de gestión de reparto — Distribuidora de bebidas (LeanDev, cliente real)
+**Estado**: En producción, con uso diario de repartidores y administración
+**Contexto**: Trabajo freelance de Leandro en LeanDev (agosto 2026 a la actualidad), para un cliente real
+**Stack**: Python, FastAPI, PostgreSQL 17, Alembic, React 19, TypeScript, PWA (Service Worker, IndexedDB/Dexie), pytest, Vitest, Docker, GitHub Actions
+**Deploy**: Render (API en Docker + frontend estático) + Neon (PostgreSQL 17) + Cloudflare R2 (backups)
+
+### Descripción
+Es el primer sistema que Leandro entregó a un cliente real como freelance en LeanDev: la gestión
+de reparto de una distribuidora de bebidas, que reemplazó a un software de escritorio legacy.
+Leandro hizo el ciclo completo de punta a punta: relevamiento con el cliente, diseño de
+arquitectura, desarrollo, deploy y soporte. Hoy está en producción y lo usan a diario los
+repartidores y la administración.
+
+### Backend hexagonal y libros mayores append-only
+El backend del sistema de reparto está hecho en FastAPI con arquitectura hexagonal (dominio,
+aplicación, infraestructura), así la lógica de negocio no depende de la persistencia ni de HTTP.
+El núcleo de datos son libros mayores append-only: los saldos de cuenta corriente y el stock de
+envases no son columnas que se pisan, sino que se derivan de movimientos inmutables, con
+trazabilidad completa de altas y bajas. Las reglas críticas están protegidas con triggers de
+PostgreSQL, que se cumplen incluso si alguien accede a la base por fuera de la aplicación.
+
+### PWA offline-first con sincronización idempotente
+El repartidor usa una PWA offline-first (React 19, TypeScript, Service Worker, IndexedDB/Dexie)
+que le permite vender y cobrar sin conexión. Leandro diseñó una cola de operaciones con un
+identificador único por operación y sincronización incremental, para que las ventas y cobros
+hechos offline no se pierdan ni se dupliquen al reconectar. Además resolvió la entrega de
+actualizaciones a la PWA instalada con versionado y chequeo al volver al foco: cada deploy llega
+a los dispositivos sin borrar los datos locales.
+
+### Calidad y lógica compartida entre capas
+En el sistema de reparto, la lógica de negocio que existe tanto en backend como en el cliente se
+verifica con un corpus de casos en JSON que corren a la vez pytest y Vitest, para que los cálculos
+nunca diverjan entre capas. En total tiene más de 1.100 tests automatizados (520+ de backend con
+pytest contra PostgreSQL real; frontend con Vitest, Testing Library y MSW) y CI en GitHub Actions
+que ejecuta tests, typecheck y build de imagen Docker en cada pull request.
+
+### Infraestructura, seguridad y backups
+La infraestructura de producción del sistema de reparto corre en Render (API en Docker + frontend
+estático) sobre Neon con PostgreSQL 17, con 16 migraciones Alembic versionadas. Hay backups
+diarios automatizados a Cloudflare R2 con verificación del dump y restauración probada.
+La autenticación usa JWT y bcrypt, con control de acceso por roles y límite de intentos de login.
+
+---
+
 ## Repuestero — ERP Multi-Tenant AI-Native
 **Estado**: Live (en producción)
-**Stack**: Python, FastAPI, SQLAlchemy 2.0, PostgreSQL 16, pgvector, Alembic, LangGraph, Groq, OpenAI, sqlglot, React 19, Supabase
+**Stack**: Python, FastAPI, SQLAlchemy 2.0, PostgreSQL 16, pgvector, Alembic, LangGraph, Groq, OpenAI, sqlglot, Docker, React 19, Supabase
 **Demo**: repuestero.vercel.app
 **Repo**: github.com/leanNunez/repuestero
 **Deploy**: Vercel (frontend) + Render (backend, Docker) + Supabase (Postgres + Auth)
 
 ### Descripción
-Es el proyecto técnicamente más ambicioso de Leandro. Una reescritura de un ERP legacy real
+Es el proyecto personal técnicamente más ambicioso de Leandro. Una reescritura de un ERP legacy real
 (un sistema en Delphi/Paradox de una casa de repuestos) hacia una arquitectura multi-tenant
 AI-native. El objetivo no es "otro ERP genérico": es capturar un dominio de negocio real y
 corregir cada anti-patrón del sistema viejo con una decisión de diseño deliberada.
@@ -21,6 +65,12 @@ conecta con un rol NOSUPERUSER sin BYPASSRLS. Hay tres roles de Postgres separad
 app_user para el negocio, owner solo para migraciones Alembic, y app_readonly solo-SELECT para
 el asistente. Un test dedicado prueba que una organización no puede ver los datos de otra.
 
+### Modelo de datos que corrige el legacy
+En Repuestero, Leandro corrigió los anti-patrones del sistema legacy en el modelo de datos:
+movimientos append-only con el saldo calculado como vista, numeración por secuencias en lugar de
+Max(id)+1, tipo numeric en lugar de float para montos, y un esquema versionado exclusivamente por
+migraciones Alembic.
+
 ### Asistente NL2SQL con defensa en profundidad
 Traduce preguntas en español a SQL de solo lectura, orquestado con LangGraph como máquina de
 estados: si el SQL falla, reintenta pasándole el error al LLM; si Groq se agota, cambia a OpenAI
@@ -29,13 +79,13 @@ prompt endurecido, guard de SQL con sqlglot (solo permite un SELECT), rol de bas
 techo de filas + statement timeout. Respuesta por streaming SSE.
 
 ### Ingesta de remitos por foto (Human-in-the-Loop)
-Cargar un remito de proveedor sacándole una foto: un modelo multimodal extrae los renglones y
+En Repuestero se puede cargar un remito de proveedor sacándole una foto: un modelo multimodal extrae los renglones y
 el LLM PROPONE, pero el humano DISPONE. No se escribe una sola fila hasta que una persona
 aprueba. Un remito = una transacción atómica, con un unique index sobre el hash de la imagen como
 candado de concurrencia. El principio que gobierna todo el proyecto: el LLM propone, nunca dispone.
 
 ### Calidad
-CI en GitHub Actions con 9 suites de pytest (incluida la de aislamiento RLS entre tenants) más
+Repuestero tiene CI en GitHub Actions con 9 suites de pytest (incluida la de aislamiento RLS entre tenants) más
 los tests de front con vitest, corriendo contra un Postgres/pgvector real. La rama main está
 protegida: exige PR con la CI en verde antes de mergear.
 
@@ -43,8 +93,9 @@ protegida: exige PR con la CI en verde antes de mergear.
 
 ## PremiumTech — E-commerce Full Stack con IA
 **Estado**: Live (en producción)
-**Stack**: React 19, TypeScript, TanStack Router, Zustand, Node.js, Express, PostgreSQL, Prisma, pgvector, Vitest
+**Stack**: React 19, TypeScript, TanStack Router, Zustand, Node.js, Express, PostgreSQL, Prisma, pgvector, Groq, Vitest, Supertest
 **Demo**: ecommerce-tech-nu.vercel.app
+**Repo**: github.com/leanNunez/Ecommerce_Tech
 **Deploy**: Vercel (frontend) + Render (backend) + Neon (PostgreSQL)
 
 ### Descripción
@@ -61,12 +112,12 @@ y un asistente de compras con IA que puede ejecutar acciones reales sobre la tie
   roles customer/admin. Fue la parte que más le costó y más le enseñó.
 
 ### Búsqueda semántica híbrida
-Combina full-text search de PostgreSQL con similitud coseno sobre embeddings de Cohere
+La búsqueda de PremiumTech combina full-text search de PostgreSQL con similitud coseno sobre embeddings de Cohere
 (1024 dimensiones) almacenados con pgvector. El score final pondera 0.4 keyword + 0.6 semántico,
 de modo que la búsqueda entiende la intención y no solo la coincidencia literal de palabras.
 
 ### AI Shopping Assistant
-Asistente con **function calling** sobre Groq (llama-3.3-70b): tiene 5 herramientas propias
+El asistente de compras de PremiumTech es un endpoint de agente con **function calling** sobre Groq (llama-3.3-70b): tiene 5 herramientas propias
 para consultar el catálogo y operar sobre la tienda, responde con streaming SSE y puede
 encadenar hasta 8 rondas de razonamiento por consulta antes de dar la respuesta final.
 

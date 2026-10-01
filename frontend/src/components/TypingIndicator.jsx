@@ -1,13 +1,17 @@
+import { useLang } from "../context/language"
+import { BotBubble } from "./BotBubble"
+
 export function TypingIndicator() {
+  const { t } = useLang()
+
   return (
-    <div className="flex justify-start mb-4">
-      <div className="bg-gray-800 rounded-2xl rounded-bl-sm px-4 py-3">
-        <div className="flex gap-1 items-center h-4">
-          <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce [animation-delay:0ms]" />
-          <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce [animation-delay:150ms]" />
-          <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce [animation-delay:300ms]" />
-        </div>
-      </div>
-    </div>
+    <BotBubble>
+      <span aria-hidden="true" className="flex h-6 items-center gap-1">
+        <span className="size-1.5 animate-typing rounded-full bg-text-2" />
+        <span className="size-1.5 animate-typing rounded-full bg-text-2 [animation-delay:160ms]" />
+        <span className="size-1.5 animate-typing rounded-full bg-text-2 [animation-delay:320ms]" />
+      </span>
+      <span className="sr-only">{t.typing}</span>
+    </BotBubble>
   )
 }

@@ -60,8 +60,15 @@ app.include_router(chat.router, prefix="/api")
 
 @app.on_event("startup")
 async def startup():
-    from services.rag_service import init_injection_embeddings
+    from services.rag_service import init_injection_embeddings, get_collection
     init_injection_embeddings()
+    get_collection()  # warm up ChromaDB so the first visitor doesn't pay the load
+
+
+@app.get("/api/status")
+def status():
+    """Public liveness check for the frontend status badge (/health may be token-protected)."""
+    return {"status": "ok"}
 
 
 HEALTH_TOKEN = os.getenv("HEALTH_TOKEN", "")
