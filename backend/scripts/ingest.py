@@ -15,12 +15,11 @@ import time
 from pathlib import Path
 
 import chromadb
-import google.generativeai as genai
+from google import genai
+from google.genai import errors, types
 from dotenv import load_dotenv
 
 load_dotenv()
-
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 DOCUMENTS = [
     {"path": "data/cv.md",       "source": "cv",       "section": "experiencia"},
@@ -31,10 +30,30 @@ DOCUMENTS = [
 
 CHROMA_DIR  = os.getenv("CHROMA_PERSIST_DIR", "./chroma_db")
 COLLECTION  = "portfolio"
-EMBED_MODEL = "models/gemini-embedding-001"
+EMBED_MODEL = "gemini-embedding-001"
 CHUNK_SIZE  = 500
 MAX_RETRIES = 5
 RETRY_DELAY_SECONDS = 30
+
+_client = None
+
+
+def _get_client() -> genai.Client:
+    """Crea el cliente de Gemini en el primer uso (importar el script no requiere API key)."""
+    global _client
+    if _client is None:
+        _client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+    return _client
+
+
+def _embed(text: str) -> list[float]:
+    """Embeddea un chunk como documento de recuperación y devuelve una lista plana de floats."""
+    result = _get_client().models.embed_content(
+        model=EMBED_MODEL,
+        contents=text,
+        config=types.EmbedContentConfig(task_type="RETRIEVAL_DOCUMENT"),
+    )
+    return list(result.embeddings[0].values)
 
 
 def load_documents():
@@ -81,15 +100,12 @@ def get_embedding(text: str) -> list[float]:
     """Embeddea un chunk, reintentando si se excede la cuota por minuto (429)."""
     for attempt in range(1, MAX_RETRIES + 1):
         try:
-            result = genai.embed_content(
-                model=EMBED_MODEL,
-                content=text,
-                task_type="retrieval_document",
-            )
-            return result["embedding"]
-        except Exception as e:
-            is_quota = "429" in str(e) or "quota" in str(e).lower()
-            if not is_quota or attempt == MAX_RETRIES:
+            return _embed(text)
+        except errors.APIError as e:
+            is_quota = e.code == 429
+            # La cuota diaria no se libera en segundos: reintentar solo alarga el arranque
+            is_daily_quota = is_quota and "PerDay" in str(e)
+            if not is_quota or is_daily_quota or attempt == MAX_RETRIES:
                 raise
             print(f"  [WAIT] Cuota excedida — reintento {attempt}/{MAX_RETRIES} en {RETRY_DELAY_SECONDS}s")
             time.sleep(RETRY_DELAY_SECONDS)
