@@ -11,6 +11,7 @@ Correrlo cada vez que modifiques los archivos de data/.
 
 import os
 import sys
+import time
 from pathlib import Path
 
 import chromadb
@@ -33,6 +34,8 @@ COLLECTION  = "portfolio"
 EMBED_MODEL = "models/gemini-embedding-001"
 CHUNK_SIZE  = 500
 CHUNK_OVERLAP = 50
+MAX_RETRIES = 5
+RETRY_DELAY_SECONDS = 30
 
 
 def load_documents():
@@ -76,12 +79,21 @@ def split_text(text: str) -> list[str]:
 
 
 def get_embedding(text: str) -> list[float]:
-    result = genai.embed_content(
-        model=EMBED_MODEL,
-        content=text,
-        task_type="retrieval_document",
-    )
-    return result["embedding"]
+    """Embeddea un chunk, reintentando si se excede la cuota por minuto (429)."""
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            result = genai.embed_content(
+                model=EMBED_MODEL,
+                content=text,
+                task_type="retrieval_document",
+            )
+            return result["embedding"]
+        except Exception as e:
+            is_quota = "429" in str(e) or "quota" in str(e).lower()
+            if not is_quota or attempt == MAX_RETRIES:
+                raise
+            print(f"  [WAIT] Cuota excedida — reintento {attempt}/{MAX_RETRIES} en {RETRY_DELAY_SECONDS}s")
+            time.sleep(RETRY_DELAY_SECONDS)
 
 
 def ingest():
