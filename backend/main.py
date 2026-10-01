@@ -41,7 +41,7 @@ if not _raw_origins:
     if IS_PROD:
         logging.getLogger(__name__).warning(
             "ALLOWED_ORIGINS no configurado en producción — CORS abierto a *. "
-            "Seteá ALLOWED_ORIGINS en las variables de entorno de Render."
+            "Seteá ALLOWED_ORIGINS en los secrets del Space de Hugging Face."
         )
     ALLOWED_ORIGINS = ["*"]
 else:
